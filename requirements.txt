@@ -1,0 +1,7 @@
+kaggle
+ipykernel
+pandas
+numpy
+zipfile
+textblob
+scikit-learn
