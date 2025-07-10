@@ -1,0 +1,6 @@
+delivery_time_scaled
+review_polarity_scaled
+category_encoded
+helpfulness_ratio
+review_length
+is_high_rating

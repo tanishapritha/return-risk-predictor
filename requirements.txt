@@ -1,7 +1,8 @@
-kaggle
-ipykernel
+streamlit
 pandas
 numpy
-zipfile
 textblob
 scikit-learn
+xgboost
+joblib
+plotly
