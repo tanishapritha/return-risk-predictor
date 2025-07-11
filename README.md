@@ -1,5 +1,7 @@
 # Return Risk Predictor
 
+[Check out the live app (deployed on Hugging Face!)](https://huggingface.co/spaces/tanishapritha/return-risk-predictor)
+
 A machine learning-powered Streamlit app that predicts the probability of a product being returned based on customer reviews, delivery metadata, and review ratings.
 
 ## Overview
