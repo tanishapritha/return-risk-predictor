@@ -82,6 +82,11 @@ Additional engineered features:
 | Random Forest       | 0.84     | 0.81      |
 | XGBoost             | 0.87     | 0.89      |
 
+## 📽 Demo
+
+![App Demo](demo.gif)
+
+
 ## Installation
 
 ### Install dependencies
@@ -123,11 +128,7 @@ app_file: app.py
 ---
 ```
 
-Your app will deploy automatically once the files are uploaded.
 
-## Contact
-
-Built by **Tanisha Pritha**  
 Hugging Face: https://huggingface.co/tanishapritha
 
 If you found this project useful, feel free to star the repository or share it.
