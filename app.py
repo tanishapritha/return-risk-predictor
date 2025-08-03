@@ -6,9 +6,9 @@ import joblib
 import os
 import plotly.express as px
 
-st.set_page_config(page_title="📦 Return Risk Predictor", layout="centered")
+st.set_page_config(page_title="Return Risk Predictor", layout="centered")
 
-st.title("📦 Return Risk Predictor")
+st.title("Return Risk Predictor")
 
 # Load models and scaler
 try:
@@ -32,14 +32,14 @@ else:
 model_option = st.selectbox("Select Model", ["XGBoost", "Random Forest", "Logistic Regression"])
 
 # Tabs for Prediction & Insights
-tabs = st.tabs(["🧪 Make a Prediction", "🧠 Model Insights"])
+tabs = st.tabs(["Make a Prediction", "Model Insights"])
 
-# ========== 🧪 TAB 1: PREDICTION ==========
+
 with tabs[0]:
-    st.header("🧪 Make a Prediction")
+    st.header("Make a Prediction")
 
     # Sidebar input
-    st.sidebar.header("🧾 Input Features")
+    st.sidebar.header("Input Features")
 
     review_text = st.sidebar.text_area("Review Text", value="The product quality was poor and arrived late.")
     delivery_time = st.sidebar.slider("Delivery Time (days)", 1, 15, 5)
@@ -74,11 +74,11 @@ with tabs[0]:
 A powerful tree-based model trained in steps. Each small tree corrects mistakes from the previous ones. Ideal for structured data like ours.
 """,
         "Random Forest": """
-### 🌲 Random Forest
+### Random Forest
 Builds many decision trees on different data slices and combines them. Reduces overfitting and improves stability.
 """,
         "Logistic Regression": """
-### 📈 Logistic Regression
+### Logistic Regression
 A linear model that predicts probabilities based on weighted features. Simple and interpretable.
 """
     }[model_option])
@@ -118,23 +118,23 @@ A linear model that predicts probabilities based on weighted features. Simple an
 
     # Feature Importance for XGBoost
     if model_option == "XGBoost":
-        st.subheader("📊 Feature Importance (XGBoost)")
+        st.subheader("Feature Importance (XGBoost)")
         importance = model.feature_importances_
         fi_df = pd.DataFrame({'Feature': xgb_feature_list, 'Importance': importance})
         fi_df = fi_df.sort_values(by="Importance", ascending=True)
         fig = px.bar(fi_df, x='Importance', y='Feature', orientation='h')
         st.plotly_chart(fig)
 
-# ========== 🧠 TAB 2: INSIGHTS ==========
+
 with tabs[1]:
-    st.header(f"🧠 How {model_option} Works")
+    st.header(f"How {model_option} Works")
 
     helpfulness_note = """
 **What is `helpfulness_ratio`?**
 
 This feature shows how useful other users found a review.
 
-🧮 **Formula:**  
+**Formula:**  
 $$
 \\text{helpfulness\\_ratio} = \\frac{\\text{HelpfulnessNumerator}}{\\text{HelpfulnessDenominator}}
 $$
@@ -147,7 +147,7 @@ Reviews marked helpful by users tend to be more reliable and often indicate stro
 
     if model_option == "XGBoost":
         st.markdown("""
-### 🌳 XGBoost (Extreme Gradient Boosting)
+### XGBoost (Extreme Gradient Boosting)
 XGBoost builds a series of small decision trees, each one trying to fix the mistakes made by the last. It’s like an “error-correcting team” of trees.
 
 **Why it works well:**
@@ -163,13 +163,13 @@ XGBoost builds a series of small decision trees, each one trying to fix the mist
 - `review_length`
 - `is_high_rating`
 
-📊 Feature importance is shown in the other tab.
+Feature importance is shown in the other tab.
 """)
         st.markdown(helpfulness_note)
 
     elif model_option == "Random Forest":
         st.markdown("""
-### 🌲 Random Forest
+### Random Forest
 Random Forest is an ensemble of decision trees. Each tree is trained on a random part of the data. Predictions are made by combining all the trees' votes.
 
 **Advantages:**
@@ -188,7 +188,7 @@ Random Forest is an ensemble of decision trees. Each tree is trained on a random
 
     elif model_option == "Logistic Regression":
         st.markdown("""
-### 📈 Logistic Regression
+### Logistic Regression
 Logistic Regression models the probability of return using a weighted sum of the features, passed through a sigmoid function.
 
 **Key Concepts:**
